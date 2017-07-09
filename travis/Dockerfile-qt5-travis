@@ -5,3 +5,4 @@ ADD . /OpenMS
 RUN cd /OpenMS
 WORKDIR /OpenMS
 RUN apt-get -y update && apt-get -y install xvfb
+RUN chmod +x tools/travis/*
