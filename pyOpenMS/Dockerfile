@@ -2,7 +2,7 @@ FROM openms/library
 
 WORKDIR /openms-build
 
-RUN apt-get install -y python-pip python-dev python-numpy
+RUN apt-get update -y && apt-get install -y python-pip python-dev python-numpy
 RUN pip install nose
 RUN pip install -U setuptools
 RUN pip install Cython==0.25.2
