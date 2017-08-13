@@ -5,8 +5,8 @@ WORKDIR /openms-build
 RUN apt-get update -y && apt-get install -y python-pip python-dev python-numpy
 RUN pip install nose
 RUN pip install -U setuptools
-RUN pip install Cython==0.25.2
-RUN pip install autowrap==0.11.0
+RUN pip install Cython
+RUN pip install autowrap
 RUN cmake -DCMAKE_PREFIX_PATH="/contrib-build/;/usr/;/usr/local" -DBOOST_USE_STATIC=OFF -DHAS_XSERVER=Off -DPYOPENMS=On ../OpenMS
 
 # make OpenMS library
