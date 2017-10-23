@@ -1,5 +1,13 @@
 FROM openms/contrib
 
+LABEL software="OpenMS lib"
+LABEL software.version="develop"
+LABEL website="https://www.OpenMS.de"
+LABEL documentation="https://www.OpenMS.de/documentation/"
+LABEL tags="proteomics, mass spectrometry"
+LABEL license="https://raw.githubusercontent.com/OpenMS/OpenMS/develop/License.txt"
+LABEL base.image="ubuntu:14.04"
+
 WORKDIR /
 RUN git clone --depth 1 https://github.com/OpenMS/OpenMS.git -b nightly
 RUN mkdir openms-build

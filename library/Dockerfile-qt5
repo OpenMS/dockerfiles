@@ -1,5 +1,13 @@
 FROM openms/contrib:qt5-v2.0
 
+LABEL software="OpenMS lib"
+LABEL software.version="feature/qt5"
+LABEL website="https://www.OpenMS.de"
+LABEL documentation="https://www.OpenMS.de/documentation/"
+LABEL tags="proteomics, mass spectrometry"
+LABEL license="https://raw.githubusercontent.com/OpenMS/OpenMS/feature/qt5/License.txt"
+LABEL base.image="ubuntu:14.04"
+
 WORKDIR /
 RUN git clone https://github.com/OpenMS/OpenMS.git && cd /OpenMS && git checkout feature/qt5 && rm -rf .git share/OpenMS/examples/
 

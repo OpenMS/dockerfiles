@@ -1,5 +1,13 @@
 FROM openms/contrib:qt5-v2.0
 
+LABEL software="OpenMS qt5 travis"
+LABEL software.version="qt5-v2.0"
+LABEL website="https://www.OpenMS.de"
+LABEL documentation="https://www.OpenMS.de/documentation/"
+LABEL tags="proteomics, mass spectrometry"
+LABEL license="https://raw.githubusercontent.com/OpenMS/contrib/master/License.txt"
+LABEL base.image="ubuntu:14.04"
+
 WORKDIR /
 ADD . /OpenMS
 RUN cd /OpenMS

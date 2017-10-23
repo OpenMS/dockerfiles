@@ -1,5 +1,13 @@
 FROM ubuntu:14.04
 
+LABEL software="OpenMS contrib"
+LABEL software.version="develop"
+LABEL website="https://www.OpenMS.de"
+LABEL documentation="https://www.OpenMS.de/documentation/"
+LABEL tags="proteomics, mass spectrometry"
+LABEL license="https://raw.githubusercontent.com/OpenMS/contrib/master/License.txt"
+LABEL base.image="ubuntu:14.04"
+
 # Step 1: set up a sane build system
 USER root
 
