@@ -12,9 +12,10 @@ ENV DEBIAN_FRONTEND noninteractive
 
 WORKDIR /
 RUN git clone --depth 1 https://github.com/OpenMS/OpenMS.git -b nightly
+#RUN mkdir OpenMS
 RUN mkdir openms-build
 
 WORKDIR /openms-build
 
-RUN cmake -DOPENMS_CONTRIB_LIBS="/contrib-build" -DCMAKE_PREFIX_PATH="/usr;/usr/local" -DBOOST_USE_STATIC=OFF ../OpenMS
+RUN cmake -DOPENMS_CONTRIB_LIBS="/contrib-build" -DCMAKE_PREFIX_PATH="/usr;/usr/local" -DBOOST_USE_STATIC=OFF -DWITH_GUI=OFF /OpenMS
 RUN make OpenMS
