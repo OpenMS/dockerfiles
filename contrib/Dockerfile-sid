@@ -8,6 +8,8 @@ LABEL tags="proteomics, mass spectrometry"
 LABEL license="https://raw.githubusercontent.com/OpenMS/contrib/master/License.txt"
 LABEL base.image="debian:unstable"
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Step 1: set up a sane build system
 USER root
 

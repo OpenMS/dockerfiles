@@ -8,6 +8,8 @@ LABEL tags="proteomics, mass spectrometry"
 LABEL license="https://raw.githubusercontent.com/OpenMS/OpenMS/develop/License.txt"
 LABEL base.image="ubuntu:14.04"
 
+ENV DEBIAN_FRONTEND noninteractive
+
 WORKDIR /openms-build
 
 RUN make TOPP && make UTILS && rm -rf src doc CMakeFiles 

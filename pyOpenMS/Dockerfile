@@ -8,6 +8,8 @@ LABEL tags="proteomics, mass spectrometry"
 LABEL license="https://raw.githubusercontent.com/OpenMS/OpenMS/develop/License.txt"
 LABEL base.image="ubuntu:14.04"
 
+ENV DEBIAN_FRONTEND noninteractive
+
 WORKDIR /openms-build
 
 RUN apt-get update -y && apt-get install -y python-pip python-dev python-numpy
