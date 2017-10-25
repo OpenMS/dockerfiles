@@ -73,4 +73,9 @@ WORKDIR /
 ENV PATH="/OpenMS/bin/:${PATH}"
 ENV LD_LIBRARY_PATH="/OpenMS/lib/:${LD_LIBRARY_PATH}"
 ENV PATH /opt/thirdparty/Fido:/opt/thirdparty/LuciPHOr2:/opt/thirdparty/MSGFPlus:/opt/thirdparty/MyriMatch:/opt/thirdparty/OMSSA:/opt/thirdparty/XTandem:/opt/thirdparty/OMSSA:/opt/thirdparty/Comet:/opt/thirdparty/OMSSA:/opt/thirdparty/Percolator:/opt/thirdparty/OMSSA:/opt/thirdparty/SpectraST:${PATH}
+ENV OPENMS_DATA_PATH /OpenMS/share/OpenMS
 
+RUN useradd -u 1001 -U -d /home/OpenMSuser -m -s /bin/bash OpenMSuser
+USER OpenMSuser
+ENV HOME /home/OpenMSuser
+WORKDIR /home/OpenMSuser
