@@ -1,8 +1,17 @@
 # OpenMS Dockerfiles
 This repository holds Dockerfiles for creating docker images for several OpenMS configurations based on different base images.
+The configurations are found in self-descriptive folders for the Dockerfile:
+ * batteries-included, a multistage build for the executables, including OpenMS' thirdparty binaries and JRE
+ * contrib, basis for most images - for now only contains built libraries not available in base image OS repo
+ * executables, base executables
+ * library, the built OpenMS framework libraries (no GUI)
+ * multistage, provides executables using docker build features introduced in 17.05, makes for slimmer images
+ * pyOpenMS
+ * travis
+
 For now, they are completely unoptimized and mainly intended for internal use during continuous integration.
-For now, builds are triggered on DockerCloud whenever there is a push to contrib and whenever there is a push to our nightly branch (which 
-is, as you could have guessed, at least once a night). Triggers and scheduled jobs are on our Jenkins.
+CI builds are triggered on DockerCloud whenever there is a push to contrib and whenever there is a push to our nightly branch (which is, as you could have guessed, at least once a night). 
+Triggers and scheduled jobs are on our Jenkins.
 
 Plan for when there is a release:
 - create a new release branch release/v${VERSION}
