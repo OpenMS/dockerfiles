@@ -20,5 +20,9 @@ Plan for when there is a release:
 - check that they build
 - tag the current head of the release/v${VERSION} branch with Release${VERSION} (e.g. Release2.2.0)
 
-TODO Use dockercompose YAML scripts to correctly resolve dependencies and reduce image size by not adding tools that are no dependencies.
-https://docs.docker.com/docker-cloud/builds/advanced/#custom-build-phase-hooks
+**Note**: docker-compose.yml holds the image names as used in the Dockerfiles. These should be kept as stable as possible, at some point they will reflect the names of the docker hub image names.
+```bash
+#{sudo} docker-compose create
+#{sudo} docker-compose push
+```
+TODO build travis hooks around the YAML [https://docs.docker.com/docker-cloud/builds/advanced/#custom-build-phase-hooks]
