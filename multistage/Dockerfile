@@ -81,8 +81,8 @@ RUN apt-get autoremove -y && \
 #COPY --from=library /OpenMS/share/OpenMS/examples /OpenMS/share/OpenMS/examples
 
 WORKDIR /
-ENV PATH="/OpenMS/bin/:${PATH}"
-ENV LD_LIBRARY_PATH="/OpenMS/lib/:${LD_LIBRARY_PATH}"
+ENV PATH /OpenMS/bin/:${PATH}
+ENV LD_LIBRARY_PATH /OpenMS/lib/:${LD_LIBRARY_PATH}
 ENV OPENMS_DATA_PATH /OpenMS/share/OpenMS
 
 RUN useradd -u 1001 -U -d /home/OpenMSuser -m -s /bin/bash OpenMSuser

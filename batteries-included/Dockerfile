@@ -70,8 +70,8 @@ RUN apt-get autoremove -y && \
 #COPY --from=library /OpenMS/share/OpenMS/examples /OpenMS/share/OpenMS/examples
 
 WORKDIR /
-ENV PATH="/OpenMS/bin/:${PATH}"
-ENV LD_LIBRARY_PATH="/OpenMS/lib/:${LD_LIBRARY_PATH}"
+ENV PATH /OpenMS/bin/:${PATH}
+ENV LD_LIBRARY_PATH /OpenMS/lib/:${LD_LIBRARY_PATH}
 ENV PATH /opt/thirdparty/Fido:/opt/thirdparty/LuciPHOr2:/opt/thirdparty/MSGFPlus:/opt/thirdparty/MyriMatch:/opt/thirdparty/OMSSA:/opt/thirdparty/XTandem:/opt/thirdparty/OMSSA:/opt/thirdparty/Comet:/opt/thirdparty/OMSSA:/opt/thirdparty/Percolator:/opt/thirdparty/OMSSA:/opt/thirdparty/SpectraST:${PATH}
 ENV OPENMS_DATA_PATH /OpenMS/share/OpenMS
 

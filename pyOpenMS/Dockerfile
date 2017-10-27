@@ -26,4 +26,4 @@ RUN make pyopenms
 WORKDIR /openms-build/pyOpenMS
 RUN python setup.py install
 WORKDIR /
-ENV PATH="/openms-build/bin/:${PATH}"
+ENV PATH /openms-build/bin/:${PATH}
