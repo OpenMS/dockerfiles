@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 services:
   contrib:
     build: contrib
@@ -6,15 +6,25 @@ services:
   library:
     build: library
     image: "openms/library"
+    depends_on:
+      - contrib
   executables:
     build: executables
     image: "openms/executables"
+    depends_on:
+      - library 
   multistage:
     build: multistage
     image: "openms/multistage"
+    depends_on:
+      - library
   batteries-included:
     build: batteries-included
     image: "openms/batteries-included"
+    depends_on:
+      - library
   pyopenms:
     build: pyOpenMS
     image: "openms/pyopenms"
+    depends_on:
+      - library
