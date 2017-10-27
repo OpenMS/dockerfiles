@@ -8,7 +8,7 @@ services:
     image: "openms/library"
   executables:
     build: executables
-    image: "openms/library"
+    image: "openms/executables"
   multistage:
     build: multistage
     image: "openms/multistage"
