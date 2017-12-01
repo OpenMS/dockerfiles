@@ -74,21 +74,24 @@ RUN git clone https://github.com/OpenMS/OpenMS.git && cd OpenMS && git checkout 
   sed -i "s/OPENMS_GIT_SHA1/\"$hash\"/" src/openms/source/CONCEPT/VersionInfo.cpp && \
   rm -rf .git/ share/OpenMS/examples/ 
 
-RUN git clone https://github.com/OpenMS/THIRDPARTY.git
-ENV PATH /home/biodocker/THIRDPARTY/All/:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/All/LuciPHOr2:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/All/MSGFPlus:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/All/Sirius:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/Linux/64bit/:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/Linux/64bit/Comet:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/Linux/64bit/Fido:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/Linux/64bit/MyriMatch:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/Linux/64bit/OMSSA:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/Linux/64bit/Percolator:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/Linux/64bit/Sirius:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/Linux/64bit/SpectraST:$PATH
-ENV PATH /home/biodocker/THIRDPARTY/Linux/64bit/XTandem:$PATH
+WORKDIR /usr/local/
 
+RUN git clone https://github.com/OpenMS/THIRDPARTY.git openms_thirdparty && rm -rf .git Windows MacOS Linux/32bit
+ENV PATH /usr/local/openms_thirdparty/All/:$PATH
+ENV PATH /usr/local/openms_thirdparty/All/LuciPHOr2:$PATH
+ENV PATH /usr/local/openms_thirdparty/All/MSGFPlus:$PATH
+ENV PATH /usr/local/openms_thirdparty/All/Sirius:$PATH
+ENV PATH /usr/local/openms_thirdparty/Linux/64bit/:$PATH
+ENV PATH /usr/local/openms_thirdparty/Linux/64bit/Comet:$PATH
+ENV PATH /usr/local/openms_thirdparty/Linux/64bit/Fido:$PATH
+ENV PATH /usr/local/openms_thirdparty/Linux/64bit/MyriMatch:$PATH
+ENV PATH /usr/local/openms_thirdparty/Linux/64bit/OMSSA:$PATH
+ENV PATH /usr/local/openms_thirdparty/Linux/64bit/Percolator:$PATH
+ENV PATH /usr/local/openms_thirdparty/Linux/64bit/Sirius:$PATH
+ENV PATH /usr/local/openms_thirdparty/Linux/64bit/SpectraST:$PATH
+ENV PATH /usr/local/openms_thirdparty/Linux/64bit/XTandem:$PATH
+
+WORKDIR /home/biodocker/
 RUN mkdir openms-build
 WORKDIR /home/biodocker/openms-build
 
@@ -102,6 +105,8 @@ ENV LD_LIBRARY_PATH /usr/local/lib/:$LD_LIBRARY_PATH
 
 WORKDIR /usr/local/
 RUN zip -r openms2.2.0.zip lib/lib* share/OpenMS/* bin/*
+WORKDIR /home/biodocker/
+
 # sudo docker run -v /media/data/shared_vm/:/data:rw -it $CONTAINER_ID cp /usr/local/openms2.2.0.zip /data/
 
 #################### END INSTALLATION #########################
