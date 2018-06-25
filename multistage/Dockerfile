@@ -14,11 +14,11 @@ RUN for l in lib/*.so; do strip --strip-all $l; done
 RUN make TOPP && make UTILS  
 #RUN make install
 
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 
 LABEL software="OpenMS executables"
-LABEL software.version="develop"
+LABEL software.version="Release2.3.0"
 LABEL website="https://www.OpenMS.de"
 LABEL documentation="https://www.OpenMS.de/documentation/"
 LABEL tags="proteomics, mass spectrometry"
@@ -67,11 +67,11 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev 
 								      zlib1g-dev \
 							              libxerces-c-dev \
                                                                      libbz2-dev
-RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-date-time1.54-dev \
-                                                                     libboost-iostreams1.54-dev \
-                                                                     libboost-regex1.54-dev \
-                                                                     libboost-math1.54-dev \
-                                                                     libboost-random1.54-dev
+#RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-date-time1.54-dev \
+#                                                                     libboost-iostreams1.54-dev \
+#                                                                     libboost-regex1.54-dev \
+#                                                                     libboost-math1.54-dev \
+#                                                                     libboost-random1.54-dev
 RUN apt-get install -y --no-install-recommends --no-install-suggests libqtcore4 \
 								      libqt4-network
 RUN apt-get autoremove -y && \

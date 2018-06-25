@@ -14,15 +14,15 @@ RUN mkdir /opt/thirdparty && \
     svn checkout https://github.com/OpenMS/THIRDPARTY/trunk/All /opt/thirdparty && \
     rm -rf /opt/thirdparty/.svn
 
-ENV PATH /opt/thirdparty/Fido:/opt/thirdparty/LuciPHOr2:/opt/thirdparty/MSGFPlus:/opt/thirdparty/MyriMatch:/opt/thirdparty/OMSSA:/opt/thirdparty/XTandem:$PATH
+ENV PATH /opt/thirdparty/Fido:/opt/thirdparty/LuciPHOr2:/opt/thirdparty/MSGFPlus:/opt/thirdparty/MyriMatch:/opt/thirdparty/OMSSA:/opt/thirdparty/XTandem:/opt/thirdparty/Comet:/opt/thirdparty/SpectraST:/opt/thirdparty/Sirius:/opt/thirdparty/Percolator:/opt/thirdparty/MaRaCluster:/opt/thirdparty/crux:${PATH}
 
 RUN make TOPP && make UTILS  
 
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 
 LABEL software="OpenMS batteries included"
-LABEL software.version="develop"
+LABEL software.version="Release2.3.0"
 LABEL website="https://www.OpenMS.de"
 LABEL documentation="https://www.OpenMS.de/documentation/"
 LABEL tags="proteomics, mass spectrometry"
@@ -55,11 +55,11 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev 
 								      zlib1g-dev \
 							              libxerces-c-dev \
                                                                      libbz2-dev
-RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-date-time1.54-dev \
-                                                                     libboost-iostreams1.54-dev \
-                                                                     libboost-regex1.54-dev \
-                                                                     libboost-math1.54-dev \
-                                                                     libboost-random1.54-dev
+#RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-date-time1.54-dev \
+#                                                                     libboost-iostreams1.54-dev \
+#                                                                     libboost-regex1.54-dev \
+#                                                                     libboost-math1.54-dev \
+#                                                                     libboost-random1.54-dev
 RUN apt-get install -y --no-install-recommends --no-install-suggests libqtcore4 \
 								      libqt4-network
 RUN apt-get install -y --no-install-recommends --no-install-suggests default-jre				      
@@ -72,7 +72,7 @@ RUN apt-get autoremove -y && \
 WORKDIR /
 ENV PATH /OpenMS/bin/:${PATH}
 ENV LD_LIBRARY_PATH /OpenMS/lib/:${LD_LIBRARY_PATH}
-ENV PATH /opt/thirdparty/Fido:/opt/thirdparty/LuciPHOr2:/opt/thirdparty/MSGFPlus:/opt/thirdparty/MyriMatch:/opt/thirdparty/OMSSA:/opt/thirdparty/XTandem:/opt/thirdparty/OMSSA:/opt/thirdparty/Comet:/opt/thirdparty/OMSSA:/opt/thirdparty/Percolator:/opt/thirdparty/OMSSA:/opt/thirdparty/SpectraST:${PATH}
+ENV PATH /opt/thirdparty/Fido:/opt/thirdparty/LuciPHOr2:/opt/thirdparty/MSGFPlus:/opt/thirdparty/MyriMatch:/opt/thirdparty/OMSSA:/opt/thirdparty/XTandem:/opt/thirdparty/Comet:/opt/thirdparty/SpectraST:/opt/thirdparty/Sirius:/opt/thirdparty/Percolator:/opt/thirdparty/MaRaCluster:/opt/thirdparty/crux:${PATH}
 ENV OPENMS_DATA_PATH /OpenMS/share/OpenMS
 
 RUN useradd -u 1001 -U -d /home/OpenMSuser -m -s /bin/bash OpenMSuser
