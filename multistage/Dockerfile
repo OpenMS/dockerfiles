@@ -6,19 +6,20 @@ WORKDIR /openms-build
 RUN apt-get -y update
 RUN apt-get install -y --no-install-recommends --no-install-suggests binutils
 
+RUN make TOPP && make UTILS  
+#RUN make install
+
 RUN for l in lib/*.so; do strip --strip-all $l; done
 #RUN strip --strip-all lib/libOpenMS.so
 #RUN strip --strip-all lib/libOpenSwathAlgo.so
 #RUN strip --strip-all lib/libSuperHirn.so
 
-RUN make TOPP && make UTILS  
-#RUN make install
 
 FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 
 LABEL software="OpenMS executables"
-LABEL software.version="Release2.3.0"
+LABEL software.version="LFQtool2.4.0"
 LABEL website="https://www.OpenMS.de"
 LABEL documentation="https://www.OpenMS.de/documentation/"
 LABEL tags="proteomics, mass spectrometry"
@@ -62,18 +63,17 @@ COPY --from=library /openms-build/lib /OpenMS/lib
 
 RUN apt-get -y update
 RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev \
-								      libglpk-dev \
-								      libzip-dev \
-								      zlib1g-dev \
-							              libxerces-c-dev \
-                                                                     libbz2-dev
-#RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-date-time1.54-dev \
-#                                                                     libboost-iostreams1.54-dev \
-#                                                                     libboost-regex1.54-dev \
-#                                                                     libboost-math1.54-dev \
-#                                                                     libboost-random1.54-dev
-RUN apt-get install -y --no-install-recommends --no-install-suggests libqtcore4 \
-								      libqt4-network
+													python-software-properties \
+													qtbase5-dev \
+													libqt5svg5-dev \
+													libzip-dev \
+													libglpk-dev \
+													zlib1g-dev \
+													libxerces-c-dev \
+													seqan-dev \
+													libbz2-dev \
+													coinor-libcoinmp-dev
+
 RUN apt-get autoremove -y && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/lib/{cache,log}
 

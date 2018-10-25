@@ -6,6 +6,8 @@ WORKDIR /openms-build
 RUN apt-get -y update
 RUN apt-get install -y --no-install-recommends --no-install-suggests binutils subversion
 
+RUN make TOPP && make UTILS  
+
 RUN for l in lib/*.so; do strip --strip-all $l; done
 
 RUN mkdir /opt/thirdparty && \
@@ -16,13 +18,13 @@ RUN mkdir /opt/thirdparty && \
 
 ENV PATH /opt/thirdparty/Fido:/opt/thirdparty/LuciPHOr2:/opt/thirdparty/MSGFPlus:/opt/thirdparty/MyriMatch:/opt/thirdparty/OMSSA:/opt/thirdparty/XTandem:/opt/thirdparty/Comet:/opt/thirdparty/SpectraST:/opt/thirdparty/Sirius:/opt/thirdparty/Percolator:/opt/thirdparty/MaRaCluster:/opt/thirdparty/crux:${PATH}
 
-RUN make TOPP && make UTILS  
+
 
 FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 
 LABEL software="OpenMS batteries included"
-LABEL software.version="Release2.3.0"
+LABEL software.version="LFQtool2.4.0"
 LABEL website="https://www.OpenMS.de"
 LABEL documentation="https://www.OpenMS.de/documentation/"
 LABEL tags="proteomics, mass spectrometry"
@@ -50,18 +52,18 @@ COPY --from=library /opt/thirdparty /opt/thirdparty
 
 RUN apt-get -y update
 RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev \
-								      libglpk-dev \
-								      libzip-dev \
-								      zlib1g-dev \
-							              libxerces-c-dev \
-                                                                     libbz2-dev
-#RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-date-time1.54-dev \
-#                                                                     libboost-iostreams1.54-dev \
-#                                                                     libboost-regex1.54-dev \
-#                                                                     libboost-math1.54-dev \
-#                                                                     libboost-random1.54-dev
-RUN apt-get install -y --no-install-recommends --no-install-suggests libqtcore4 \
-								      libqt4-network
+													python-software-properties \
+													qtbase5-dev \
+													libqt5svg5-dev \
+													libzip-dev \
+													libglpk-dev \
+													zlib1g-dev \
+													libxerces-c-dev \
+													seqan-dev \
+													libbz2-dev \
+													coinor-libcoinmp-dev
+
+
 RUN apt-get install -y --no-install-recommends --no-install-suggests default-jre				      
 RUN apt-get autoremove -y && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/lib/{cache,log}

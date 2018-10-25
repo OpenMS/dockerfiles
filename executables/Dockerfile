@@ -1,7 +1,7 @@
 FROM openms/library 
 
 LABEL software="OpenMS executables"
-LABEL software.version="Release2.3.0"
+LABEL software.version="LFQtool2.4.0"
 LABEL website="https://www.OpenMS.de"
 LABEL documentation="https://www.OpenMS.de/documentation/"
 LABEL tags="proteomics, mass spectrometry"

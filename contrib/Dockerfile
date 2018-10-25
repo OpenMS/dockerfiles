@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 LABEL software="OpenMS contrib packages"
-LABEL software.version="Release2.3.0"
+LABEL software.version="LFQtool2.4.0"
 LABEL website="https://www.OpenMS.de"
 LABEL documentation="https://www.OpenMS.de/documentation/"
 LABEL tags="proteomics, mass spectrometry"
@@ -22,13 +22,19 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests ca-certific
 													patch \
 													libtool \
 													automake \
-													libqt4-dev \
-													libqtwebkit-dev \
-													libqt4-opengl-dev \
 													libgomp1 \
-													python-software-properties
+													python-software-properties \
+													qtbase5-dev \
+													libqt5svg5-dev \
+													libsvm-dev\
+													libglpk-dev \
+													zlib1g-dev \
+													libxerces-c-dev \
+													seqan-dev \
+													libbz2-dev \
+													coinor-libcoinmp-dev
 
-RUN git clone --depth 1 --branch 'Release2.3.0'  --single-branch https://github.com/OpenMS/contrib.git
+RUN git clone --depth 1 --branch 'master'  --single-branch https://github.com/OpenMS/contrib.git
 
 RUN mkdir contrib-build
 
