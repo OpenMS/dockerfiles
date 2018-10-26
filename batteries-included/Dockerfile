@@ -62,7 +62,11 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev 
 													seqan-dev \
 													libbz2-dev \
 													coinor-libcoinmp-dev
-
+# install R 3.5
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:marutter/c2d4u3.5
+RUN apt-get update
+RUN apt install -y r-api-3.5
 
 RUN apt-get install -y --no-install-recommends --no-install-suggests default-jre				      
 RUN apt-get autoremove -y && \
