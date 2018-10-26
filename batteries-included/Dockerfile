@@ -68,7 +68,7 @@ RUN add-apt-repository -y ppa:marutter/c2d4u3.5
 RUN apt-get update
 RUN apt install -y r-api-3.5
 # install MSstats
-RUN Rscript -e 'source("https://bioconductor.org/biocLite.R"); biocLite("MSstats");'
+RUN Rscript -e 'source("https://bioconductor.org/biocLite.R"); biocLite("MSstats",ask=FALSE,suppressUpdates=TRUE);'
 
 RUN apt-get install -y --no-install-recommends --no-install-suggests default-jre				      
 RUN apt-get autoremove -y && \
