@@ -62,7 +62,14 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev 
 													seqan-dev \
 													libbz2-dev \
 													coinor-libcoinmp-dev
-
+# install R 3.5
+RUN apt-get install -y software-properties-common apt-transport-https
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+RUN add-apt-repository 'deb [arch=amd64,i386] https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/'
+RUN apt-get update
+RUN apt install -y r-base
+# install MSstats
+RUN Rscript -e 'source("https://bioconductor.org/biocLite.R"); biocLite("MSstats",ask=FALSE,suppressUpdates=TRUE);'
 
 RUN apt-get install -y --no-install-recommends --no-install-suggests default-jre				      
 RUN apt-get autoremove -y && \
