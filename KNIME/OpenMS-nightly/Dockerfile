@@ -12,6 +12,6 @@
   -r "http://update.knime.com/analytics-platform/3.6,http://update.knime.com/community-contributions/trunk" \
   -p2.arch x86_64 \
   -profileProperties org.eclipse.update.install.features=true \
-  -i "de.openms.feature.feature.group,org.knime.features.r.feature.group,org.knime.features.chem.types.feature.group,org.rdkit.knime.feature.feature.group,org.knime.features.ext.svg.feature.group" \
+  -i "org.knime.features.r.feature.group,org.knime.features.chem.types.feature.group,org.rdkit.knime.feature.feature.group,org.knime.features.ext.svg.feature.group" \
   -p KNIMEProfile \
   -nosplash
