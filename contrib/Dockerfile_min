@@ -36,7 +36,7 @@ RUN sudo mkdir -p ~/temp && cd ~/temp && \
          wget https://cmake.org/files/v${cmakeversion}/cmake-${cmakeversion}.${cmakebuild}-Linux-x86_64.sh && \
          mkdir -p /opt/cmake && \
          chmod +x cmake-${cmakeversion}.${cmakebuild}-Linux-x86_64.sh && \
-         sh cmake-${cmakeversion}.${cmakebuild}-Linux-x86_64.sh --prefix=/opt/cmake && ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake && \
+         sh cmake-${cmakeversion}.${cmakebuild}-Linux-x86_64.sh --skip-license --prefix=/opt/cmake && ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake && \
          rm -rf ~/temp
 
 # Install Step 3: advanced dependencies
