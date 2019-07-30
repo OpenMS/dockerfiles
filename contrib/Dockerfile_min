@@ -44,7 +44,7 @@ RUN sudo apt-get -y update && \
          apt-get install -y cmake && \
          apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev libglpk-dev libzip-dev zlib1g-dev libxerces-c-dev libbz2-dev && \
          apt-get install -y --no-install-recommends --no-install-suggests libhdf5-dev && \
-         apt-get install -y --no-install-recommends --no-install-suggests qtbase5-dev libqt5svg5-dev && \
+         apt-get install -y --no-install-recommends --no-install-suggests qtbase5-dev libqt5svg5-dev libqt5opengl5-dev && \
          apt-get install -y --no-install-recommends --no-install-suggests libboost-date-time-dev \
                                  libboost-iostreams-dev \
                                  libboost-regex-dev \
