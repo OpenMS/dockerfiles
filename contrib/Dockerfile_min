@@ -32,10 +32,12 @@ RUN sudo apt-get -y update && \
 # Install Step 2: obtain cmake 3.x in ubuntu 16.04
 
 RUN echo https://cmake.org/files/v${cmakeversion}/cmake-${cmakeversion}.${cmakebuild}-Linux-x86_64.sh
-RUN sudo mkdir ~/temp && cd ~/temp && \
+RUN sudo mkdir -p ~/temp && cd ~/temp && \
          wget https://cmake.org/files/v${cmakeversion}/cmake-${cmakeversion}.${cmakebuild}-Linux-x86_64.sh && \
-         mkdir /opt/cmake && \
-         sh cmake-${cmakeversion}.${cmakebuild}-Linux-x86_64.sh --prefix=/opt/cmake && ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+         mkdir -p /opt/cmake && \
+         chmod +x cmake-${cmakeversion}.${cmakebuild}-Linux-x86_64.sh && \
+         sh cmake-${cmakeversion}.${cmakebuild}-Linux-x86_64.sh --prefix=/opt/cmake && ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake && \
+         rm -rf ~/temp
 
 # Install Step 3: advanced dependencies
 RUN sudo apt-get -y update && \
