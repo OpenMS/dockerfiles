@@ -18,8 +18,8 @@ MAINTAINER Hannes Rost <hroest@stanford.edu>
 
 USER root
 
-ARG cmakeversion=3.14
-ARG cmakebuild=5
+ENV cmakeversion 3.14
+ENV cmakebuild 5
 
 # Install Step 1: basic dependencies
 RUN sudo apt-get -y update && \
