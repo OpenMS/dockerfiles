@@ -18,6 +18,9 @@ MAINTAINER Hannes Rost <hroest@stanford.edu>
 
 USER root
 
+ENV cmakeversion=3.14
+ENV cmakebuild=5
+
 # Install Step 1: basic dependencies
 RUN sudo apt-get -y update && \
          apt-get install -y --no-install-recommends --no-install-suggests g++ autoconf patch libtool make git automake && \
@@ -27,12 +30,11 @@ RUN sudo apt-get -y update && \
          rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Step 2: obtain cmake 3.x in ubuntu 16.04
-version=3.14
-build=5
+
 RUN sudo mkdir ~/temp && cd ~/temp && \
-         wget https://cmake.org/files/v$version/cmake-$version.$build-Linux-x86_64.sh && \
-         mkdir /opt/cmake &&
-         sh cmake-$version.$build-Linux-x86_64.sh --prefix=/opt/cmake && ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+         wget https://cmake.org/files/v$cmakeversion/cmake-$cmakeversion.$cmakebuild-Linux-x86_64.sh && \
+         mkdir /opt/cmake && \
+         sh cmake-$cmakeversion.$cmakebuild-Linux-x86_64.sh --prefix=/opt/cmake && ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 
 # Install Step 3: advanced dependencies
 RUN sudo apt-get -y update && \
