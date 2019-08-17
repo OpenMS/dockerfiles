@@ -7,7 +7,7 @@ RUN apt-get -y update
 RUN apt-get install -y --no-install-recommends --no-install-suggests g++ autoconf automake patch libtool make git
 RUN apt-get install -y --no-install-recommends --no-install-suggests software-properties-common python-software-properties
 
-# Step 2: get an up-to date cmake 3.x for ubuntu 14.04
+# Step 2: obtain cmake 3.x in ubuntu 14.04
 RUN add-apt-repository ppa:george-edison55/cmake-3.x
 RUN apt-get -y update
 RUN apt-get install -y cmake
@@ -19,10 +19,10 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-da
                                                                      libboost-regex1.54-dev \
                                                                      libboost-math1.54-dev \
                                                                      libboost-random1.54-dev
-
-# Step 4: install Qt4
-RUN apt-get install -y --no-install-recommends --no-install-suggests qt4-dev-tools qt4-default qt4-qtconfig qt4-qmake
-RUN apt-get install -y --no-install-recommends --no-install-suggests libqt4-dev libqt4-opengl-dev libqt4-svg libqtwebkit-dev
+# Step 4: Qt5
+RUN add-apt-repository ppa:beineri/opt-qt571-trusty 
+RUN apt-get -y update
+RUN apt-get install -y qt57base qt57webengine qt57svg libgl1-mesa-dev && rm -rf /opt/qt57/examples
 
 ###################################
 # Step 5: Compiled dependencies
