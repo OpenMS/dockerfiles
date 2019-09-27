@@ -19,10 +19,12 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-da
                                                                      libboost-regex1.54-dev \
                                                                      libboost-math1.54-dev \
                                                                      libboost-random1.54-dev
+RUN apt-get install -y --no-install-recommends --no-install-suggests libhdf5-dev
 
-# Step 4: install Qt4
-RUN apt-get install -y --no-install-recommends --no-install-suggests qt4-dev-tools qt4-default qt4-qtconfig qt4-qmake
-RUN apt-get install -y --no-install-recommends --no-install-suggests libqt4-dev libqt4-opengl-dev libqt4-svg libqtwebkit-dev
+# Step 4: Qt5
+RUN add-apt-repository ppa:beineri/opt-qt571-trusty 
+RUN apt-get -y update
+RUN apt-get install -y qt57base qt57webengine qt57svg libgl1-mesa-dev && rm -rf /opt/qt57/examples
 
 ###################################
 # Step 5: Compiled dependencies
@@ -38,4 +40,15 @@ RUN cmake -DBUILD_TYPE=COINOR ../contrib && rm -rf archives src
 RUN cmake -DBUILD_TYPE=SQLITE ../contrib && rm -rf archives src
 
 WORKDIR /
+
+# Metadata
+LABEL base.image="openms/contrib"
+LABEL version="3.0"
+LABEL software="OpenMS (dependencies)"
+LABEL software.version="openms-contrib-v2.5.1"
+LABEL description="C++ libraries and tools for MS/MS data analysis"
+LABEL website="http://www.openms.org/"
+LABEL documentation="http://www.openms.org/"
+LABEL license="http://www.openms.org/"
+LABEL tags="Proteomics"
 
