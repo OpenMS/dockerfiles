@@ -1,0 +1,20 @@
+version: '3'
+services:
+  contrib:
+    build: contrib
+    image: "openms/contrib"
+  library:
+    build: library
+    image: "openms/library"
+  executables:
+    build: executables
+    image: "openms/library"
+  multistage:
+    build: multistage
+    image: "openms/multistage"
+  batteries-included:
+    build: batteries-included
+    image: "openms/batteries-included"
+  pyopenms:
+    build: pyOpenMS
+    image: "openms/pyopenms"
