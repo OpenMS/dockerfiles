@@ -17,7 +17,7 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-da
                                                                      libboost-math1.62-dev \
                                                                      libboost-random1.62-dev
 RUN apt-get install -y --no-install-recommends --no-install-suggests libhdf5-dev
-RUN apt-get install -y --no-install-recommends --no-install-suggests qtbase5-dev libqt5svg5-dev
+RUN apt-get install -y --no-install-recommends --no-install-suggests qtbase5-dev libqt5svg5-dev libqt5opengl5-dev
 
 ###################################
 # Step 4: Compiled dependencies
