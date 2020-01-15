@@ -1,7 +1,7 @@
 FROM openms/contrib:latest
 
 WORKDIR /
-RUN git clone https://github.com/OpenMS/OpenMS.git && cd /OpenMS && rm -rf .git share/OpenMS/examples/
+RUN git clone -b develop --single-branch https://github.com/OpenMS/OpenMS.git && cd /OpenMS
 
 RUN mkdir openms-build
 WORKDIR /openms-build
