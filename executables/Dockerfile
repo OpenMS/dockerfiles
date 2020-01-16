@@ -1,5 +1,8 @@
 FROM openms/library 
 
+RUN apt-get -y update
+RUN apt-get install -y --no-install-recommends --no-install-suggests openjdk-8-jdk
+
 WORKDIR /OpenMS
 RUN mkdir /thirdparty && \
     git submodule update --init THIRDPARTY && \
