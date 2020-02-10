@@ -1,9 +1,11 @@
+#!/bin/bash
 if [ "$SOURCE_BRANCH" == "master" ]
 then
   OPENMS_TAG="latest"
   OPENMS_BRANCH="develop"
 else
   ## TODO currently the contrib works for both release 2.5 and develop. Add another build and tag ASAP.
+  #OPENMS_TAG="${SOURCE_BRANCH//\//-}"
   OPENMS_TAG="latest"
   OPENMS_BRANCH="${SOURCE_BRANCH}"
 fi
