@@ -3,8 +3,8 @@ then
   OPENMS_TAG="latest"
   OPENMS_BRANCH="develop"
 else
-  ## TODO decide on release tags currently we take the branch name e.g. release/2.5.0
-  OPENMS_TAG="${SOURCE_BRANCH}"
+  ## TODO currently the contrib works for both release 2.5 and develop. Add another build and tag ASAP.
+  OPENMS_TAG="latest"
   OPENMS_BRANCH="${SOURCE_BRANCH}"
 fi
 

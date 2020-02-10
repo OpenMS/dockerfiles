@@ -1,3 +1,4 @@
+ARG OPENMS_TAG
 FROM openms/contrib:latest
 
 WORKDIR /
