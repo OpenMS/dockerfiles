@@ -1,4 +1,5 @@
-FROM openms/library 
+ARG OPENMS_TAG=latest
+FROM openms/library:${OPENMS_TAG} 
 
 RUN apt-get -y update
 RUN apt-get install -y --no-install-recommends --no-install-suggests openjdk-8-jdk

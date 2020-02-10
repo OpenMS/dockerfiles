@@ -1,0 +1,10 @@
+if [ "$SOURCE_BRANCH" == "master" ]
+then
+  OPENMS_TAG="latest"
+else
+  ## TODO decide on release tags currently we take the branch name e.g. release/2.5.0
+  OPENMS_TAG="${SOURCE_BRANCH}"
+fi
+
+## TODO with this custom build hook we could also use subfolders instead of branches to specify release Dockerfiles
+docker build --build-arg OPENMS_TAG=$OPENMS_TAG -f $DOCKERFILE_PATH -t $IMAGE_NAME .
