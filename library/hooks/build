@@ -11,4 +11,4 @@ else
 fi
 
 ## TODO with this custom build hook we could also use subfolders instead of branches to specify release Dockerfiles
-docker build --build-arg OPENMS_TAG=$OPENMS_TAG OPENMS_BRANCH=$OPENMS_BRANCH -f $DOCKERFILE_PATH -t $IMAGE_NAME .
+docker build --build-arg OPENMS_TAG=$OPENMS_TAG --build-arg OPENMS_BRANCH=$OPENMS_BRANCH -f $DOCKERFILE_PATH -t $IMAGE_NAME .
