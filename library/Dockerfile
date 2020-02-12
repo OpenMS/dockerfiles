@@ -1,8 +1,10 @@
-ARG OPENMS_TAG
+ARG OPENMS_TAG=latest
 FROM openms/contrib:latest
 
+ARG OPENMS_BRANCH=develop
+
 WORKDIR /
-RUN git clone -b develop --single-branch https://github.com/OpenMS/OpenMS.git && cd /OpenMS
+RUN git clone -b ${OPENMS_BRANCH} --single-branch https://github.com/OpenMS/OpenMS.git && cd /OpenMS
 
 RUN mkdir openms-build
 WORKDIR /openms-build
