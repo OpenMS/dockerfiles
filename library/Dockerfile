@@ -1,8 +1,10 @@
 ARG OPENMS_TAG
-FROM openms/contrib:latest
+ARG OPENMS_BRANCH
+FROM openms/contrib:${OPENMS_TAG}
 
 WORKDIR /
-RUN git clone -b develop --single-branch https://github.com/OpenMS/OpenMS.git && cd /OpenMS
+# branch will be develop for the Dockerfiles on master
+RUN git clone -b ${OPENMS_BRANCH} --single-branch https://github.com/OpenMS/OpenMS.git && cd /OpenMS
 
 RUN mkdir openms-build
 WORKDIR /openms-build
