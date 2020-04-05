@@ -1,6 +1,6 @@
-ARG OPENMS_TAG
-ARG OPENMS_BRANCH
+ARG OPENMS_TAG=latest
 FROM openms/contrib:${OPENMS_TAG}
+ARG OPENMS_BRANCH=develop
 
 WORKDIR /
 # branch will be develop for the Dockerfiles on master
