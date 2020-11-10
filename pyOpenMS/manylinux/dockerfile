@@ -1,15 +1,6 @@
 ## openms/manylinux is based on hroest/manylinux2014_qt59:v1.1
 ARG OPENMS_BRANCH=${SOURCE_BRANCH}
-
-# extract version
-REGEX_VERSION='release\/([0-9]\.[0-9]\.[0-9])'
-
-if [[ $OPENMS_BRANCH =~ $REGEX_VERSION ]]
-then
-  version=${BASH_REMATCH[1]}
-else
-  version="nightly"
-fi
+ARG OPENMS_VERSION=${OPENMS_VERSION}
 
 FROM quay.io/pypa/manylinux2014_x86_64
 
@@ -23,7 +14,7 @@ RUN yum install -y cmake3
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
 
 # install contrib based on the OpenMS branch used! 
-RUN git clone -b ${OPENMS_BRANCH} --single-branch git clone https://github.com/OpenMS/OpenMS.git &&
+RUN git clone -b ${OPENMS_BRANCH} --single-branch https://github.com/OpenMS/OpenMS.git &&
     cd OpenMS && \
     git submodule update --init contrib \
     mkdir contrib-build && \
@@ -40,10 +31,9 @@ WORKDIR /
 LABEL base.image="manylinux2014_x86_64"
 LABEL version="1.0"
 LABEL software="OpenMS (dependencies for manylinux2010)"
-LABEL software.version=${version}
+LABEL software.version=${OPENMS_VERSION}
 LABEL description="C++ libraries and tools for MS/MS data analysis"
 LABEL website="http://www.openms.org/"
 LABEL documentation="http://www.openms.org/"
 LABEL license="http://www.openms.org/"
 LABEL tags="Proteomics"
-
