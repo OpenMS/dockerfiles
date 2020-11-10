@@ -1,6 +1,6 @@
 ## openms/manylinux is based on hroest/manylinux2014_qt59:v1.1
-ARG OPENMS_BRANCH=${SOURCE_BRANCH}
-ARG OPENMS_VERSION=${OPENMS_VERSION}
+ARG OPENMS_BRANCH=develop
+ARG OPENMS_VERSION=latest
 
 FROM quay.io/pypa/manylinux2014_x86_64
 
