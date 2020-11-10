@@ -1,5 +1,7 @@
 #!/bin/bash
 
-CONTRIB_BRANCH_OR_TAG = ${CONTRIB_BRANCH_OR_TAG}
+OPENMS_BRANCH="${SOURCE_BRANCH}"
 
-docker build --build-arg CONTRIB_BRANCH_OR_TAG=$CONTRIB_BRANCH_OR_TAG -f $DOCKERFILE_PATH -t $IMAGE_NAME .
+## TODO with this custom build hook we could also use subfolders instead of branches to specify release Dockerfiles
+docker build --build-arg OPENMS_BRANCH=$OPENMS_BRANCH -f $DOCKERFILE_PATH -t $IMAGE_NAME .
+

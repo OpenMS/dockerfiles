@@ -1,5 +1,15 @@
 ## openms/manylinux is based on hroest/manylinux2014_qt59:v1.1
-ARG CONTRIB_BRANCH_OR_TAG=${CONTRIB_BRANCH_OR_TAG}
+ARG OPENMS_BRANCH=${SOURCE_BRANCH}
+
+# extract version
+REGEX_VERSION='release\/([0-9]\.[0-9]\.[0-9])'
+
+if [[ $OPENMS_BRANCH =~ $REGEX_VERSION ]]
+then
+  version=${BASH_REMATCH[1]}
+else
+  version="nightly"
+fi
 
 FROM quay.io/pypa/manylinux2014_x86_64
 
@@ -12,14 +22,17 @@ RUN yum install -y libtool
 RUN yum install -y cmake3
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
 
-# install contrib (need ALL here to build static libs)
-RUN git clone -b ${CONTRIB_BRANCH_OR_TAG} --single-branch https://github.com/OpenMS/contrib.git && \
+# install contrib based on the OpenMS branch used! 
+RUN git clone -b ${OPENMS_BRANCH} --single-branch git clone https://github.com/OpenMS/OpenMS.git &&
+    cd OpenMS && \
+    git submodule update --init contrib \
     mkdir contrib-build && \
     cd /contrib-build && \
     cmake -DBUILD_TYPE=ALL ../contrib && \
     rm -rf archives src && \
+    cp contrib-build /contrib-build &&\
     cd / && \
-    rm -rf contrib
+    rm -rf OpenMS
 
 WORKDIR /
 
@@ -27,7 +40,7 @@ WORKDIR /
 LABEL base.image="manylinux2014_x86_64"
 LABEL version="1.0"
 LABEL software="OpenMS (dependencies for manylinux2010)"
-LABEL software.version="qt5"
+LABEL software.version=${version}
 LABEL description="C++ libraries and tools for MS/MS data analysis"
 LABEL website="http://www.openms.org/"
 LABEL documentation="http://www.openms.org/"
