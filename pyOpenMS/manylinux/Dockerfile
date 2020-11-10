@@ -14,7 +14,7 @@ RUN yum install -y cmake3
 RUN ln -s /usr/bin/cmake3 /usr/bin/cmake
 
 # install contrib based on the OpenMS branch used! 
-RUN git clone -b ${OPENMS_BRANCH} --single-branch https://github.com/OpenMS/OpenMS.git &&
+RUN git clone -b ${OPENMS_BRANCH} --single-branch https://github.com/OpenMS/OpenMS.git && \
     cd OpenMS && \
     git submodule update --init contrib \
     mkdir contrib-build && \
