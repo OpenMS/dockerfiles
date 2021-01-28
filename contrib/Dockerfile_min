@@ -1,6 +1,6 @@
 
-# Base Image (16.04) since we require GCC 4.9
-FROM ubuntu:16.04
+# Base Image (18.04) since we require GCC 7
+FROM ubuntu:18.04
 
 # Metadata
 LABEL base.image="openms_dependencies"
@@ -18,18 +18,18 @@ MAINTAINER Hannes Rost <hroest@stanford.edu>
 
 USER root
 
-ENV cmakeversion 3.15
+ENV cmakeversion 3.19
 ENV cmakebuild 0
 
 # Install Step 1: basic dependencies
 RUN sudo apt-get -y update && \
-         apt-get install -y --no-install-recommends --no-install-suggests g++ autoconf patch libtool make git automake && \
+         apt-get install -y --no-install-recommends --no-install-suggests g++-7 autoconf patch libtool make git automake && \
          apt-get install -y --no-install-recommends --no-install-suggests software-properties-common python-software-properties && \
          apt-get clean && \
          apt-get purge && \
          rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install Step 2: obtain cmake 3.x in ubuntu 16.04
+# Install Step 2: obtain cmake 3.x in ubuntu 18.04
 
 RUN echo https://cmake.org/files/v${cmakeversion}/cmake-${cmakeversion}.${cmakebuild}-Linux-x86_64.sh
 RUN sudo mkdir -p ~/temp && cd ~/temp && \
