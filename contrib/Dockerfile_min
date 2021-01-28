@@ -23,7 +23,7 @@ ENV cmakebuild 0
 
 # Install Step 1: basic dependencies
 RUN sudo apt-get -y update && \
-         apt-get install -y --no-install-recommends --no-install-suggests g++-7 autoconf patch libtool make git automake && \
+         apt-get install -y --no-install-recommends --no-install-suggests g++ autoconf patch libtool make git automake && \
          apt-get install -y --no-install-recommends --no-install-suggests software-properties-common && \
          apt-get clean && \
          apt-get purge && \
