@@ -26,7 +26,6 @@ RUN mkdir contrib-build
 
 WORKDIR /contrib-build
 
-RUN cmake -DBUILD_TYPE=SEQAN ../contrib && rm -rf archives src
 RUN cmake -DBUILD_TYPE=WILDMAGIC ../contrib && rm -rf archives src
 RUN cmake -DBUILD_TYPE=EIGEN ../contrib && rm -rf archives src
 RUN cmake -DBUILD_TYPE=COINOR ../contrib && rm -rf archives src
