@@ -65,7 +65,4 @@ RUN cmake -DBUILD_TYPE=EIGEN ../contrib && rm -rf archives src
 RUN cmake -DBUILD_TYPE=COINOR ../contrib && rm -rf archives src
 RUN cmake -DBUILD_TYPE=SQLITE ../contrib && rm -rf archives src
 
-# Use python 3 as default
-RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 10
-
 WORKDIR /
