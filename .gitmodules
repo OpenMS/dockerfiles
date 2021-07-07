@@ -1,0 +1,4 @@
+[submodule "archlinux_build"]
+	path = archlinux_build
+	url = https://github.com/lukaszimmermann/docker_openms_archlinux_build.git
+	branch = master
