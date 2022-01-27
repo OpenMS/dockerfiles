@@ -10,7 +10,7 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests g++ autocon
 RUN apt-get install -y cmake
 
 # Step 3: advanced dependencies
-RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev libglpk-dev libzip-dev zlib1g-dev libxerces-c-dev libbz2-dev
+RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev libglpk-dev libzip-dev zlib1g-dev libxerces-c-dev libbz2-dev libomp-dev
 RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-date-time1.62-dev \
                                                                      libboost-iostreams1.62-dev \
                                                                      libboost-regex1.62-dev \
@@ -37,7 +37,7 @@ WORKDIR /
 LABEL base.image="openms/contrib"
 LABEL version="3.0"
 LABEL software="OpenMS (dependencies)"
-LABEL software.version="1804-v2.5.1"
+LABEL software.version="2.7.0-Ubuntu18.04"
 LABEL description="C++ libraries and tools for MS/MS data analysis"
 LABEL website="http://www.openms.org/"
 LABEL documentation="http://www.openms.org/"
