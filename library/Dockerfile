@@ -14,3 +14,16 @@ RUN /bin/bash -c "cmake -DCMAKE_BUILD_TYPE='Release' -DCMAKE_PREFIX_PATH='/contr
 
 # make OpenMS library
 RUN make OpenMS
+
+# Metadata
+LABEL base.image="openms/openms-library"
+LABEL version="3.0"
+LABEL software="OpenMS (library)"
+LABEL software.version="2.7.0-Ubuntu18.04"
+LABEL description="C++ libraries and tools for MS/MS data analysis"
+LABEL website="http://www.openms.org/"
+LABEL documentation="http://www.openms.org/"
+LABEL license="http://www.openms.org/"
+LABEL tags="Proteomics"
+# to link to repo on github container registry
+LABEL org.opencontainers.image.source https://github.com/OpenMS/OpenMS
