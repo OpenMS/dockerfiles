@@ -6,11 +6,15 @@ USER root
 RUN apt-get -y update
 RUN apt-get install -y --no-install-recommends --no-install-suggests g++ autoconf automake patch libtool make git gpg wget
 
-# Step 2: get an up-to date cmake
-RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
-RUN echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ bionic main' | tee /etc/apt/sources.list.d/kitware.list >/dev/null
-RUN apt-get -y update
-RUN apt-get install -y cmake
+# Step 2: get an up-to date cmake (HEREDOC needs DOCKER_BUILDKIT=1 enabled)
+RUN <<-EOF
+    cmake_ubuntu_version=$(lsb_release -cs)
+    if ! wget -q --method=HEAD "https://apt.kitware.com/ubuntu/dists/$cmake_ubuntu_version/Release"; then
+      bash -c "$(wget -O - https://apt.kitware.com/kitware-archive.sh)"
+    else
+      wget -qO - https://apt.kitware.com/kitware-archive.sh | bash -s -- --release focal
+    fi
+EOF
 
 # Step 3: advanced dependencies
 RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev libglpk-dev libzip-dev zlib1g-dev libxerces-c-dev libbz2-dev libomp-dev
