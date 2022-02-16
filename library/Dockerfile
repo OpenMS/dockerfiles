@@ -1,5 +1,5 @@
 ARG OPENMS_TAG=latest
-FROM openms/contrib:${OPENMS_TAG}
+FROM ghcr.io/openms/contrib:${OPENMS_TAG}
 ARG OPENMS_BRANCH=develop
 
 WORKDIR /
