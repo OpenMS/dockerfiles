@@ -53,4 +53,6 @@ LABEL website="http://www.openms.org/"
 LABEL documentation="http://www.openms.org/"
 LABEL license="http://www.openms.org/"
 LABEL tags="Proteomics"
+# to link to repo on github container registry
+LABEL org.opencontainers.image.source https://github.com/OpenMS/contrib
 
