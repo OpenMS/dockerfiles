@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.3-labs
 FROM ubuntu:18.04
 
 # Step 1: set up a sane build system
@@ -6,7 +7,7 @@ USER root
 RUN apt-get -y update
 RUN apt-get install -y --no-install-recommends --no-install-suggests g++ autoconf automake patch libtool make git gpg wget
 
-# Step 2: get an up-to date cmake (HEREDOC needs DOCKER_BUILDKIT=1 enabled)
+# Step 2: get an up-to date cmake (HEREDOC needs DOCKER_BUILDKIT=1 enabled or build with "docker buildx")
 RUN <<-EOF
     cmake_ubuntu_version=$(lsb_release -cs)
     if ! wget -q --method=HEAD "https://apt.kitware.com/ubuntu/dists/$cmake_ubuntu_version/Release"; then
