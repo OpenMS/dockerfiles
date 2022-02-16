@@ -17,3 +17,15 @@ RUN make TOPP && make UTILS && rm -rf src doc CMakeFiles
 WORKDIR /
 ENV PATH="/openms-build/bin/:${PATH}"
 
+# Metadata
+LABEL base.image="openms/openms-tools"
+LABEL version="3.0"
+LABEL software="OpenMS (tools)"
+LABEL software.version="2.7.0-Ubuntu18.04"
+LABEL description="C++ libraries and tools for MS/MS data analysis"
+LABEL website="http://www.openms.org/"
+LABEL documentation="http://www.openms.org/"
+LABEL license="http://www.openms.org/"
+LABEL tags="Proteomics"
+# to link to repo on github container registry
+LABEL org.opencontainers.image.source https://github.com/OpenMS/OpenMS
