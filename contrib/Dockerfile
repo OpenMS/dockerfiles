@@ -16,6 +16,8 @@ RUN <<-EOF
     else
       wget -qO - https://apt.kitware.com/kitware-archive.sh | bash -s -- --release focal
     fi
+    apt-get -y update
+    apt-get install -y cmake
 EOF
 
 # Step 3: advanced dependencies
