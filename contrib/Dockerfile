@@ -5,7 +5,8 @@ FROM ubuntu:18.04
 USER root
 
 RUN apt-get -y update
-RUN apt-get install -y --no-install-recommends --no-install-suggests g++ autoconf automake patch libtool make git gpg wget
+RUN apt-get install -y --no-install-recommends --no-install-suggests g++ autoconf automake patch libtool make git gpg wget ca-certificates curl
+RUN update-ca-certificates
 
 # Step 2: get an up-to date cmake (HEREDOC needs DOCKER_BUILDKIT=1 enabled or build with "docker buildx")
 RUN <<-EOF
@@ -18,13 +19,12 @@ RUN <<-EOF
 EOF
 
 # Step 3: advanced dependencies
-RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev libglpk-dev libzip-dev zlib1g-dev libxerces-c-dev libbz2-dev libomp-dev
+RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev libglpk-dev libzip-dev zlib1g-dev libxerces-c-dev libbz2-dev libomp-dev libhdf5-dev
 RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-date-time1.62-dev \
                                                                      libboost-iostreams1.62-dev \
                                                                      libboost-regex1.62-dev \
                                                                      libboost-math1.62-dev \
                                                                      libboost-random1.62-dev
-RUN apt-get install -y --no-install-recommends --no-install-suggests libhdf5-dev
 RUN apt-get install -y --no-install-recommends --no-install-suggests qtbase5-dev libqt5svg5-dev libqt5opengl5-dev
 
 ###################################
