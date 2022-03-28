@@ -44,5 +44,5 @@ jobs:
           push: true # Will only build if this is not here
           context: pyOpenMS/manylinux
           tags: |
-            ghcr.io/${{ steps.downcase_repo.outputs.repo }}:${{ steps.tag_name.outputs.tag }}
+            ghcr.io/openms/contrib_manylinux2014:${{ steps.tag_name.outputs.tag }}
             
