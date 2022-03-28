@@ -1,13 +1,7 @@
-## openms/manylinux is based on hroest/manylinux2014_qt59:v1.1
 FROM quay.io/pypa/manylinux2014_x86_64
 
 ARG OPENMS_BRANCH="develop"
 ARG OPENMS_VERSION="latest"
-
-# Override yum to work around the problem with newly built libcurl.so.4
-# https://access.redhat.com/solutions/641093
-RUN echo $'#!/bin/bash\n\
-LD_PRELOAD=/usr/lib64/libcurl.so.4 /usr/bin/yum "$@"' > /usr/local/bin/yum && chmod a+x /usr/local/bin/yum
 
 RUN yum install -y wget
 RUN yum install -y xz qt5-qtbase-devel 
