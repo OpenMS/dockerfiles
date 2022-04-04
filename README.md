@@ -1,15 +1,12 @@
 # OpenMS Dockerfiles
 This repository holds Dockerfiles for creating docker images for several OpenMS configurations based on different base images.
 For now, they are completely unoptimized and mainly intended for internal use during continuous integration.
-For now, builds are triggered on DockerCloud whenever there is a push to contrib and whenever there is a push to our nightly branch (which 
-is, as you could have guessed, at least once a night). Triggers and scheduled jobs are on our Jenkins.
+For the most important images (contrib, manylinux2014, executables) builds are triggered with GitHub Actions and published
+on https://github.com/orgs/OpenMS/packages.
 
-Plan for when there is a release:
-- create a new release branch release/v${VERSION}
-- then first tag contrib, Thirdparty and OpenMS with Release${VERSION} on the appropriate branches/commits
-- then change the git checkouts in the Dockerfiles to these tags
-- check that they build
-- tag the current head of the release/v${VERSION} branch with Release${VERSION} (e.g. Release2.2.0)
+# Writing dockerfiles
+See e.g. https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+By now, we require docker buildx to build them to include newer features https://docs.docker.com/buildx/working-with-buildx/
 
 TODO Use dockercompose YAML scripts to correctly resolve dependencies and reduce image size by not adding tools that are no dependencies.
 https://docs.docker.com/docker-cloud/builds/advanced/#custom-build-phase-hooks
