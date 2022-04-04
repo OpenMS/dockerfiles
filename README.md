@@ -1,8 +1,8 @@
 # OpenMS Dockerfiles
 This repository holds Dockerfiles for creating docker images for several OpenMS configurations based on different base images.
 For now, they are completely unoptimized and mainly intended for internal use during continuous integration.
-For the most important images (contrib, manylinux2014, executables) builds are triggered with GitHub Actions and published
-on https://github.com/orgs/OpenMS/packages.
+For the most important images (contrib, manylinux2014, executables) builds are triggered with GitHub Actions in the respective
+other repos from this organization. They are published on https://github.com/orgs/OpenMS/packages.
 
 # Writing dockerfiles
 See e.g. https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
