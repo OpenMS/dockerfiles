@@ -27,7 +27,7 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests libboost-da
                                                                      libboost-regex1.62-dev \
                                                                      libboost-math1.62-dev \
                                                                      libboost-random1.62-dev
-RUN apt-get install -y --no-install-recommends --no-install-suggests qtbase5-dev libqt5svg5-dev libqt5opengl5-dev
+RUN apt-get install -y --no-install-recommends --no-install-suggests qtbase5-dev libqt5svg5-dev libqt5opengl5-dev libqt5sql5-sqlite
 
 ###################################
 # Step 4: Compiled dependencies
