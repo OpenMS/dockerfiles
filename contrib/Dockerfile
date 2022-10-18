@@ -44,7 +44,7 @@ RUN cmake -DBUILD_TYPE=SQLITE ../contrib && rm -rf archives src
 WORKDIR /
 
 # Metadata
-LABEL base.image="ubuntu:18.04"
+LABEL base.image="ubuntu:20.04"
 LABEL version="3.0"
 LABEL software="OpenMS (dependencies)"
 LABEL software.version="2.7.0-Ubuntu20.04"
