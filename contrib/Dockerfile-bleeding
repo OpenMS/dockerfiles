@@ -23,10 +23,10 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests libqt4-dev 
 
 ###################################
 # Step 5: install specific dependencies (previously compiled)
-RUN apt-get install -y --no-install-recommends --no-install-suggests libwildmagic-dev \
+RUN apt-get install -y --no-install-recommends --no-install-suggests \
          coinor-libcoinutils-dev coinor-libcgl-dev coinor-libcbc-dev \
          coinor-libclp-dev coinor-libosi-dev coinor-libvol-dev \
-         seqan-dev libeigen3-dev libsqlite3-dev
+         seqan-dev libeigen3-dev
 
 # This makes the contrib package unnecessary
 
