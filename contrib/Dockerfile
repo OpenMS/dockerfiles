@@ -3,7 +3,22 @@ FROM ubuntu:18.04
 
 # Step 1: set up a sane build system
 USER root
-	@@ -22,11 +22,11 @@ EOF
+
+RUN apt-get -y update	
+RUN apt-get install -y --no-install-recommends --no-install-suggests g++ autoconf automake patch libtool make git gpg wget ca-certificates curl	
+RUN update-ca-certificates	
+
+# Step 2: get an up-to date cmake (HEREDOC needs DOCKER_BUILDKIT=1 enabled or build with "docker buildx")	
+RUN <<-EOF	
+    cmake_ubuntu_version=$(lsb_release -cs)	
+    if ! wget -q --method=HEAD "https://apt.kitware.com/ubuntu/dists/$cmake_ubuntu_version/Release"; then	
+      bash -c "$(wget -O - https://apt.kitware.com/kitware-archive.sh)"	
+    else	
+      wget -qO - https://apt.kitware.com/kitware-archive.sh | bash -s -- --release focal	
+    fi	
+    apt-get -y update	
+    apt-get install -y cmake	
+EOF	
 
 # Step 3: advanced dependencies
 RUN apt-get install -y --no-install-recommends --no-install-suggests libsvm-dev libglpk-dev libzip-dev zlib1g-dev libxerces-c-dev libbz2-dev libomp-dev libhdf5-dev
