@@ -1,8 +1,0 @@
-FROM openms/contrib:qt5-v2.0
-
-WORKDIR /
-ADD . /OpenMS
-RUN cd /OpenMS
-WORKDIR /OpenMS
-RUN apt-get -y update && apt-get -y install xvfb
-RUN chmod +x tools/travis/*

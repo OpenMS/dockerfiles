@@ -16,10 +16,10 @@ RUN /bin/bash -c "cmake -DCMAKE_BUILD_TYPE='Release' -DCMAKE_PREFIX_PATH='/contr
 RUN make OpenMS
 
 # Metadata
-LABEL base.image="openms/openms-library"
+LABEL base.image="ubuntu:22.04"
 LABEL version="3.0"
 LABEL software="OpenMS (library)"
-LABEL software.version="2.7.0-Ubuntu18.04"
+LABEL software.version="3.0.0-Ubuntu22.04"
 LABEL description="C++ libraries and tools for MS/MS data analysis"
 LABEL website="http://www.openms.org/"
 LABEL documentation="http://www.openms.org/"
