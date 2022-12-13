@@ -14,7 +14,7 @@ RUN <<-EOF
     if ! wget -q --method=HEAD "https://apt.kitware.com/ubuntu/dists/$cmake_ubuntu_version/Release"; then
       bash -c "$(wget -O - https://apt.kitware.com/kitware-archive.sh)"
     else
-      wget -qO - https://apt.kitware.com/kitware-archive.sh | bash -s -- --release focal
+      wget -qO - https://apt.kitware.com/kitware-archive.sh | bash -s -- --release $cmake_ubuntu_version
     fi
     apt-get -y update
     apt-get install -y cmake
