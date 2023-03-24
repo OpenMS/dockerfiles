@@ -2,7 +2,7 @@
   FROM ghcr.io/openms/knime:${KNIME_VERSION}
   
   RUN "$KNIME_DIR/knime" -application org.eclipse.equinox.p2.director \
-  -r "http://update.knime.com/analytics-platform/${KNIME_VERSION},https://abibuilder.informatik.uni-tuebingen.de/archive/openms/knime-plugin/updateSite/nightly/" \
+  -r "http://update.knime.com/analytics-platform/${KNIME_VERSION},https://abibuilder.cs.uni-tuebingen.de/archive/openms/knime-plugin/updateSite/nightly/" \
   -p2.arch x86_64 \
   -profileProperties org.eclipse.update.install.features=true \
   -i "de.openms.feature.feature.group,com.genericworkflownodes.knime.feature.feature.group" \
