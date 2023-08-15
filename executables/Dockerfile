@@ -19,7 +19,7 @@ ENV PATH="/openms-build/bin/:${PATH}"
 
 # Metadata
 LABEL base.image="ubuntu:22.04"
-LABEL version="3.0"
+LABEL version="3.1"
 LABEL software="OpenMS (tools)"
 LABEL software.version="3.0.0-Ubuntu22.04"
 LABEL description="C++ libraries and tools for MS/MS data analysis"
