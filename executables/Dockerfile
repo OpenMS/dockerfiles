@@ -8,7 +8,7 @@ WORKDIR /OpenMS
 RUN mkdir /thirdparty && \
     git submodule update --init THIRDPARTY && \
     cp -r THIRDPARTY/All/* /thirdparty && \
-    cp -r THIRDPARTY/Linux/64bit/* /thirdparty
+    cp -r THIRDPARTY/Linux/x86_64/* /thirdparty
 ENV PATH="/thirdparty/LuciPHOr2:/thirdparty/MSGFPlus:/thirdparty/Sirius:/thirdparty/ThermoRawFileParser:/thirdparty/Comet:/thirdparty/Fido:/thirdparty/MaRaCluster:/thirdparty/Percolator:/thirdparty/SpectraST:/thirdparty/XTandem:/thirdparty/Sage:${PATH}"
 
 WORKDIR /openms-build
